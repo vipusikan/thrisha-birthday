@@ -1,0 +1,13 @@
+import React,{useState} from 'react'
+import { AnimatePresence } from 'framer-motion'
+import IntroScreen from './components/IntroScreen'
+import Navbar from './components/Navbar'
+import HeroSection from './components/HeroSection'
+import StorySection from './components/StorySection'
+import MemoryGallery from './components/MemoryGallery'
+import LoveReasons from './components/LoveReasons'
+import LoveLetter from './components/LoveLetter'
+import SurpriseSection from './components/SurpriseSection'
+import FinalSection from './components/FinalSection'
+import { birthday } from './data/birthday'
+export default function App(){const[intro,setIntro]=useState(true);const[musicOpen,setMusicOpen]=useState(false);const openSong=()=>{setMusicOpen(true);window.open(birthday.spotifyUrl,'_blank','noopener,noreferrer')};return <div className="app"><AnimatePresence>{intro&&<IntroScreen onOpen={()=>setIntro(false)}/>}</AnimatePresence><Navbar musicOpen={musicOpen} onMusic={openSong}/><main><HeroSection onMusic={openSong}/><StorySection/><MemoryGallery/><LoveReasons/><LoveLetter/><SurpriseSection/><FinalSection onMusic={openSong}/></main><footer>Made with too much love by Vibu · For Thrisha, my Darloo ♡</footer></div>}
